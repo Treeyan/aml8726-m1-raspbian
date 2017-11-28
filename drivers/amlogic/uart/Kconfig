@@ -1,0 +1,42 @@
+
+config SERIAL_MESON_ONE 
+	tristate "Meson one serial port support" 
+	depends on ARCH_MESON_ONE 
+	select SERIAL_CORE 
+	help 
+		This enables the driver for the on-chip UARTs of the Amlogic 
+		Meson One processors. 
+
+config SERIAL_MESON_ONE_CONSOLE 
+	bool "Support for console on meson one" 
+	depends on SERIAL_MESON_ONE=y 
+	select SERIAL_CORE_CONSOLE 
+	select SERIAL_EARLYCON 
+	help 
+		Say Y here if you wish to use a Amlogic Meson One UART as the 
+		system console (the system console is the device which 
+		receives all kernel messages and warnings and which allows 
+		logins in single user mode) as /dev/ttySx.
+
+choice
+        prompt "---SET ttyS0 for CONSOLE PORT"
+        default AM_UART0_SET_PORT_A
+
+config AM_UART0_SET_PORT_A
+        bool "uart port A"
+        depends on SERIAL_MESON_ONE
+        select SERIAL_CORE
+        select SERIAL_CORE_CONSOLE
+        help
+           hardware uart
+
+config AM_UART0_SET_PORT_B
+        bool "uart port B"
+        depends on SERIAL_MESON_ONE
+        select SERIAL_CORE
+        select SERIAL_CORE_CONSOLE
+        help
+           hardware uart
+
+endchoice
+

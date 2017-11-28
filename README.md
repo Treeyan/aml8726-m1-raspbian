@@ -5,7 +5,8 @@ Amlogic 8726m for raspbian
 
 [link]: https://github.com/raspberrypi/linux
 
-    一只很古老的机顶盒，奇怪的居然有 sata 接口。因此装上 owncloud 做备份。SoC 是晶晨AML8726-M，运行andorid 2.3.5。不能安装 owncloud 这里移植几个驱动到 kernel 4.9，使 raspbian 可以直接运行，-_-!没有图形模式噢。不过，安装 owncloud 就方便了。
+    一只很古老的机顶盒，奇怪的居然有 sata 接口。因此装上 owncloud 做备份。SoC 是晶晨AML8726-M，运行andorid 2.3.5。
+    不能安装 owncloud 这里移植几个驱动到 kernel 4.9，使 raspbian 可以直接运行，-_-!没有图形模式噢。不过，方便安装 owncloud
 
     现支持的驱动：
         ethernet

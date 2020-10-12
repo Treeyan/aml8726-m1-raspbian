@@ -24,7 +24,7 @@ source "drivers/amlogic/uart/Kconfig"
 #	Block devices
 #
 comment "Block devices"
-#source "drivers/amlogic/usb/Kconfig"
+source "drivers/amlogic/usb/Kconfig"
 source "drivers/amlogic/sata/Kconfig"
 source "drivers/amlogic/cardreader/Kconfig"
 #source "drivers/amlogic/spi_nor/Kconfig"

@@ -11,12 +11,13 @@ Amlogic 8726m for raspbian
     现支持的驱动：
         ethernet
         mmc/sd
-        sata
+        sata （未测试）
         uart
+        usb  （20201012）
 
     需要一条 ttl 线。装载并运行 raspbian，登录机顶盒都是必要的。
 
-#编译
+#### 编译
 
     在ubuntu 16.04 上
 
@@ -24,17 +25,17 @@ Amlogic 8726m for raspbian
 
     2, make meson_mbx_defconfig
 
-    3, ./mktftp.sh -j8       ; 8个任务编译
+    3, ./make-uImage.sh -j8       ; 8个任务编译
 
     文件 arch/arm/boot/uImage 
 
-#烧录
+#### 烧录
 
     下载 raspbian-xxx-lite.img 写到 sd卡后执行
 
     dd if=arch/arm/boot/uImage of=/dev/‘sdcard for raspbian' bs=512 seek=1
 
-#启动
+#### 启动
 
     插入刚刚的sd卡到机顶盒
     连接串口线到机顶盒 ttl，使 uboot 的 log 信息可见，回车后进入 amlogic uboot 环境
@@ -59,3 +60,17 @@ Amlogic 8726m for raspbian
     raspbian jessie 版执行 sudo apt install owncloud
     OO, 得到 owncloud 。。。
 
+
+![raspbian](./screen.png)
+
+#### UBS
+
+	usb 在 host mode 下不太兼容 kernel 4.x 的 autosuspend ，若有问题请在 kernel 启动参数中加上 usbcore.autosuspend=-1 
+	
+
+#### 结束
+
+    单核 512M 内存，实在很难跑图形界面，openwrt 很合适，安装 rasperry pi 的 openwrt 固件，做个文件和下载的静音主机，由于
+    没有 hard-float 指令支持，只能安装树莓派第一代的固件噢。
+
+![openwrt](./openwrt.jpg)

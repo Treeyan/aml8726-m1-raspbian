@@ -180,4 +180,4 @@ obj-$(CONFIG_MESON_ONE_CARDREADER)	+= amlogic/cardreader/
 obj-$(CONFIG_AM_ETHERNET)			+= amlogic/net/
 obj-$(CONFIG_AML_RTC)				+= amlogic/rtc/
 obj-$(CONFIG_SATA_DWC_AHCI)			+= amlogic/sata/
-
+obj-$(CONFIG_USB_DWC_OTG_HCD)		+= amlogic/usb/

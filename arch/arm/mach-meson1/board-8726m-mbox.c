@@ -289,7 +289,7 @@ static struct platform_device amlogic_spi_nor_device = {
 
 #ifdef CONFIG_USB_DWC_OTG_HCD
 #ifdef CONFIG_USB_DPLINE_PULLUP_DISABLE
-static set_vbus_valid_ext_fun(unsigned int id,char val)
+static void set_vbus_valid_ext_fun(unsigned int id,char val)
 {
 	unsigned int  reg = (PREI_USB_PHY_A_REG1 + id);
 	if(val == 1)
@@ -919,11 +919,9 @@ static struct platform_device aml_nand_device = {
 
 #endif
 
-
+unsigned int eth_clk_src_index = 1;
 
 #if defined(CONFIG_PM)
-
-unsigned int eth_clk_src_index = 1;
 
 static void aml_eth_clock_enable(int enable)
 {
@@ -1787,7 +1785,8 @@ static void disable_unused_model(void)
 
 static void meson_one_poweroff( void )
 {
-    meson_one_reset( 0, NULL );
+//    meson_one_reset( 0, NULL );
+	asm __volatile__( "loop: wfi; b loop;" );
 }
 
 static __init void m1_init_machine(void)

@@ -3094,7 +3094,7 @@ static int ethernet_suspend(struct platform_device *dev, pm_message_t event)
  * @return
  */
 /* --------------------------------------------------------------------------*/
-#if 0
+#ifndef CONFIG_PM 
 static int ethernet_resume(struct platform_device *dev)
 {
 	int res = 0;
